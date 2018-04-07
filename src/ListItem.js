@@ -17,6 +17,7 @@ class ListItem extends Component {
     const item = this.props.item;
     return (
       <TouchableHighlight
+        // Добавить onLongPress event
         onPress={this.onPress}
         underlayColor="#dddddd"
         style={styles.container}
