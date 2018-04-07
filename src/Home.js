@@ -4,9 +4,11 @@ import {
   Text,
   TextInput,
   View,
-  Button,
+  TouchableOpacity,
+  Image,
   ActivityIndicator
 } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 const urlForNickname = nickname =>
   `https://www.instagram.com/${nickname}/?__a=1`;
@@ -67,31 +69,31 @@ class Home extends Component {
         <ActivityIndicator size="large" />
       </View>
     ) : (
-      <View style={styles.container}>
-        <Text style={styles.description}>Найдите фотки друзей</Text>
+      <KeyboardAwareScrollView
+        style={styles.container}
+        contentContainerStyle={styles.contentContainer}
+      >
+        <Image source={require('./assets/logo.png')} style={styles.image} />
         <Text style={styles.description}>Напишите никнэйм</Text>
-        <View style={styles.flowRight}>
-          <TextInput
-            underlineColorAndroid={'transparent'}
-            style={styles.searchInput}
-            value={this.state.searchString}
-            onChange={this.onSearchTextChanged}
-            placeholder="Поиск по никнэйму"
-          />
-          <Button
-            onPress={this.onSearchPressed}
-            color="#48BBEC"
-            title="Найти"
-          />
-        </View>
+        <TextInput
+          underlineColorAndroid={'transparent'}
+          style={styles.searchInput}
+          value={this.state.searchString}
+          onChange={this.onSearchTextChanged}
+          placeholder="Поиск по никнэйму"
+        />
+        <TouchableOpacity onPress={this.onSearchPressed} style={styles.button}>
+          <Text style={styles.buttonTitle}>Найти</Text>
+        </TouchableOpacity>
         <Text style={styles.description}>{this.state.message}</Text>
-      </View>
+      </KeyboardAwareScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   description: {
+    marginTop: 20,
     marginBottom: 20,
     fontSize: 18,
     textAlign: 'center',
@@ -100,28 +102,46 @@ const styles = StyleSheet.create({
   activityContainer: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    backgroundColor: 'white'
   },
   container: {
-    padding: 30,
-    marginTop: 65,
-    alignItems: 'center'
+    flex: 1,
+    backgroundColor: 'white'
   },
-  flowRight: {
-    flexDirection: 'row',
+  contentContainer: {
+    flexGrow: 1,
+    paddingTop: 50,
+    paddingHorizontal: 25,
     alignItems: 'center',
-    alignSelf: 'stretch'
+    backgroundColor: 'white'
+  },
+  image: {
+    width: 100,
+    height: 100
+  },
+  button: {
+    height: 44,
+    width: '100%',
+    backgroundColor: '#e1306c',
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  buttonTitle: {
+    color: 'white',
+    fontSize: 18
   },
   searchInput: {
     height: 36,
     padding: 4,
-    marginRight: 5,
-    flexGrow: 1,
     fontSize: 18,
     borderWidth: 1,
-    borderColor: '#48BBEC',
+    borderColor: '#e1306c',
     borderRadius: 8,
-    color: '#48BBEC'
+    color: 'black',
+    marginBottom: 20,
+    width: '100%'
   }
 });
 
