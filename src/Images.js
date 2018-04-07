@@ -8,8 +8,8 @@ class Images extends Component {
   };
 
   onPressItem = index => {
-    const { navigate, state } = this.props.navigation;
-    navigate('Property', { property: state.params.images[index] });
+    console.log(`Selected image id: ${index}`);
+    // TODO: Переход на detail view
   };
 
   keyExtractor = (item, index) => index;
