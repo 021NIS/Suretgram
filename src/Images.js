@@ -3,9 +3,9 @@ import { FlatList } from 'react-native';
 import ListItem from './ListItem';
 
 class Images extends Component {
-  static navigationOptions = {
-    title: 'Suretter'
-  };
+  static navigationOptions = ({ navigation }) => ({
+    title: navigation.state.params.username
+  });
 
   onPressItem = index => {
     console.log(`Selected image id: ${index}`);

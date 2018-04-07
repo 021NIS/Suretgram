@@ -50,11 +50,13 @@ class Home extends Component {
   };
 
   handleResponse = response => {
+    const { username } = response.graphql.user;
     const images = response.graphql.user.edge_owner_to_timeline_media.edges.map(
       edge => edge.node
     );
     this.setState({ isLoading: false, message: '' });
     this.props.navigation.navigate('Images', {
+      username,
       images
     });
   };
