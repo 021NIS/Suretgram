@@ -60,11 +60,11 @@ class Home extends Component {
   };
 
   render() {
-    const spinner = this.state.isLoading ? (
-      <ActivityIndicator size="large" />
-    ) : null;
-
-    return (
+    return this.state.isLoading ? (
+      <View style={styles.activityContainer}>
+        <ActivityIndicator size="large" />
+      </View>
+    ) : (
       <View style={styles.container}>
         <Text style={styles.description}>Найдите фотки друзей</Text>
         <Text style={styles.description}>Напишите никнэйм</Text>
@@ -82,7 +82,6 @@ class Home extends Component {
             title="Найти"
           />
         </View>
-        {spinner}
         <Text style={styles.description}>{this.state.message}</Text>
       </View>
     );
@@ -95,6 +94,11 @@ const styles = StyleSheet.create({
     fontSize: 18,
     textAlign: 'center',
     color: '#656565'
+  },
+  activityContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   container: {
     padding: 30,
