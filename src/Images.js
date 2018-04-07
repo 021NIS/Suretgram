@@ -15,7 +15,7 @@ class Images extends Component {
   keyExtractor = (item, index) => index;
 
   renderItem = ({ item, index }) => (
-    <ListItem url={item} index={index} onPressItem={this.onPressItem} />
+    <ListItem item={item} index={index} onPressItem={this.onPressItem} />
   );
 
   render() {

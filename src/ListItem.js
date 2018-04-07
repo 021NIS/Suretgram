@@ -14,14 +14,14 @@ class ListItem extends Component {
   };
 
   render() {
-    const url = this.props.url;
+    const item = this.props.item;
     return (
       <TouchableHighlight
         onPress={this.onPress}
         underlayColor="#dddddd"
         style={styles.container}
       >
-        <Image source={{ uri: url }} style={styles.image} />
+        <Image source={{ uri: item.display_url }} style={styles.image} />
       </TouchableHighlight>
     );
   }
